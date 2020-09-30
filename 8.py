@@ -13,10 +13,12 @@ def dsl():
     print("4-rotate")
     print("5-resize")
     print("6-crop")
-    print("7-Exit")
+    print("7-Horizontally Flipped")
+    print("8-Vertically Flipped")
+    print("9-Exit")
     a=input()
     if is_int(a)==True:
-        while is_int(a)==True and ((int(a)<1 or int(a)>7)):
+        while is_int(a)==True and ((int(a)<1 or int(a)>9)):
             print("Error: Invaild Input, try again ..."+"\n")
             print("Please Choose:")
             print("1-Insert new pic")
@@ -25,7 +27,9 @@ def dsl():
             print("4-rotate")
             print("5-resize")
             print("6-crop")
-            print("7-Exit")
+            print("7-Horizontally Flipped")
+            print("8-Vertically Flipped")
+            print("9-Exit")
             a=(input())
     else:
         while is_int(a)==False:
@@ -37,9 +41,11 @@ def dsl():
             print("4-rotate")
             print("5-resize")
             print("6-crop")
-            print("7-Exit")
+            print("7-Horizontally Flipped")
+            print("8-Vertically Flipped")
+            print("9-Exit")
             a=(input())
-            while is_int(a)==True and ((int(a)<1 or int(a)>7)):
+            while is_int(a)==True and ((int(a)<1 or int(a)>9)):
                 print("Error: Invaild Input, try again ..."+"\n")
                 print("Please Choose:")
                 print("1-Insert new pic")
@@ -48,7 +54,9 @@ def dsl():
                 print("4-rotate")
                 print("5-resize")
                 print("6-crop")
-                print("7-Exit")
+                print("7-Horizontally Flipped Image")
+                print("8-Vertically Flipped Image")
+                print("9-Exit")
                 a=(input())
     return(a)
 def b1(b):
@@ -160,7 +168,15 @@ def b6(h):
                 if is_int(z)==True:
                     h=h.crop((int(s),int(f),int(q),int(z)))
                     h.show()
-                    return(h)        
+                    return(h)       
+def b7(h):
+    h=h.transpose(Image.FLIP_LEFT_RIGHT)
+    h.show()
+    return h
+def b8(h):
+    h=h.transpose(Image.FLIP_TOP_BOTTOM)
+    h.show()
+    return h
 h=None
 lms=True
 b=dsl()
@@ -183,5 +199,12 @@ while lms:
     while int(b)==6:
         h=b6(h)
         b=dsl()
-    if int(b)==7:
+    while int(b)==7:
+        h=b7(h)
+        b=dsl()
+    while int(b)==8:
+        h=b8(h)
+        b=dsl()
+    if int(b)==9:
+        print("Thank you for using my program")
         lms=False
